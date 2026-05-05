@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー・免責事項｜お金のトリセツ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --olive:        #6B7C4E;
+    --olive-dark:   #4E5C38;
+    --olive-light:  #8FA06A;
+    --olive-pale:   #C8D4B0;
+    --olive-mist:   #EDF0E6;
+    --cream:        #F7F2E8;
+    --cream-deep:   #EDE5D4;
+    --terra:        #C17F5A;
+    --terra-light:  #D9A07C;
+    --terra-pale:   #F2DDD0;
+    --gold:         #C9A96E;
+    --gold-light:   #E2C99A;
+    --brown:        #3D2E1E;
+    --brown-mid:    #6B5444;
+    --brown-light:  #9C8070;
+    --white:        #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--cream);
+    color: var(--brown);
+    line-height: 1.85;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%236B7C4E' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: rgba(247,242,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--cream-deep);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    padding: 0 48px;
+  }
+  .header-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  .logo { text-decoration: none; display: flex; flex-direction: column; gap: 1px; }
+  .logo-main {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--olive-dark); letter-spacing: 0.08em;
+  }
+  .logo-sub { font-size: 9px; color: var(--brown-light); letter-spacing: 0.12em; font-weight: 500; }
+  nav { display: flex; align-items: center; gap: 32px; }
+  nav a {
+    text-decoration: none; font-size: 12px; font-weight: 500;
+    color: var(--brown-mid); letter-spacing: 0.1em; transition: color 0.2s; position: relative;
+  }
+  nav a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1px; background: var(--terra); transition: width 0.3s ease;
+  }
+  nav a:hover { color: var(--olive-dark); }
+  nav a:hover::after { width: 100%; }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    background: var(--olive-dark);
+    padding: 56px 48px 64px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -60px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(200,212,176,0.1), transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-en::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--gold); opacity: 0.5;
+  }
+  .hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+  }
+  .hero-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.05em;
+  }
+  .hero-updated {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 4px 14px;
+    border-radius: 50px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 56px 48px 96px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--brown-light);
+    margin-bottom: 48px;
+    letter-spacing: 0.05em;
+  }
+  .breadcrumb a { color: var(--brown-light); text-decoration: none; transition: color 0.2s; }
+  .breadcrumb a:hover { color: var(--terra); }
+  .breadcrumb-sep { color: var(--olive-pale); }
+
+  /* ── TAB NAVIGATION ── */
+  .tab-nav {
+    display: flex;
+    gap: 4px;
+    background: var(--white);
+    border: 1.5px solid var(--cream-deep);
+    border-radius: 18px;
+    padding: 6px;
+    margin-bottom: 48px;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 13px;
+    border: none;
+    background: transparent;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brown-light);
+    cursor: pointer;
+    transition: all 0.25s;
+    letter-spacing: 0.05em;
+  }
+  .tab-btn.active {
+    background: var(--olive-dark);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(78,92,56,0.25);
+  }
+  .tab-btn:hover:not(.active) {
+    background: var(--olive-mist);
+    color: var(--olive-dark);
+  }
+
+  /* ── SECTION ── */
+  .policy-section { display: none; }
+  .policy-section.active { display: block; }
+
+  /* ── SECTION HEADING ── */
+  .sec-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .sec-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--terra);
+    text-transform: uppercase;
+    font-style: italic;
+  }
+  .sec-line { flex: 1; height: 1px; background: var(--cream-deep); }
+  .sec-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 24px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── INTRO BOX ── */
+  .intro-box {
+    background: var(--white);
+    border: 1.5px solid var(--cream-deep);
+    border-left: 4px solid var(--olive);
+    border-radius: 0 18px 18px 0;
+    padding: 22px 26px;
+    margin-bottom: 40px;
+    font-size: 14px;
+    color: var(--brown-mid);
+    line-height: 1.9;
+  }
+
+  /* ── ARTICLE ITEM ── */
+  .policy-article {
+    margin-bottom: 44px;
+  }
+  .policy-article h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--olive-dark);
+    padding: 13px 20px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .policy-article h2 .h2-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--olive-pale);
+    min-width: 28px;
+  }
+  .policy-article p {
+    font-size: 14px;
+    color: var(--brown-mid);
+    line-height: 1.95;
+    margin-bottom: 14px;
+  }
+  .policy-article ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding-left: 4px;
+  }
+  .policy-article ul li {
+    font-size: 14px;
+    color: var(--brown-mid);
+    line-height: 1.8;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .policy-article ul li::before {
+    content: '›';
+    color: var(--olive);
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: -1px;
+  }
+  .policy-article a {
+    color: var(--olive);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+  .policy-article a:hover { color: var(--terra); }
+
+  /* ── INFO BOX ── */
+  .info-box {
+    background: var(--olive-mist);
+    border: 1.5px solid var(--olive-pale);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-size: 13px;
+    color: var(--brown-mid);
+    line-height: 1.85;
+  }
+  .info-box-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--olive-dark);
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .warning-box {
+    background: var(--terra-pale);
+    border: 1.5px solid rgba(193,127,90,0.25);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-size: 13px;
+    color: var(--brown-mid);
+    line-height: 1.85;
+  }
+  .warning-box .info-box-title { color: var(--terra); }
+
+  /* ── CONTACT INFO ── */
+  .contact-box {
+    background: var(--white);
+    border: 1.5px solid var(--cream-deep);
+    border-radius: 18px;
+    padding: 24px 28px;
+    margin-top: 40px;
+  }
+  .contact-box-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+  }
+  .contact-box p {
+    font-size: 13px;
+    color: var(--brown-mid);
+    line-height: 1.85;
+  }
+  .contact-box a {
+    color: var(--olive);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── DIVIDER ── */
+  .policy-divider {
+    height: 1px;
+    background: var(--cream-deep);
+    margin: 44px 0;
+    position: relative;
+  }
+  .policy-divider::after {
+    content: '✦';
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--cream);
+    padding: 0 12px;
+    font-size: 10px;
+    color: var(--olive-pale);
+    letter-spacing: 0.2em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--brown);
+    padding: 48px 48px 28px;
+    position: relative; z-index: 1;
+  }
+  .footer-inner { max-width: 1080px; margin: 0 auto; }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 24px;
+  }
+  .footer-logo {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 18px; color: var(--cream);
+    font-weight: 700; letter-spacing: 0.08em; margin-bottom: 8px;
+  }
+  .footer-tagline { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; line-height: 1.7; }
+  .footer-nav { display: flex; flex-direction: column; gap: 10px; text-align: right; }
+  .footer-nav a {
+    font-size: 12px; color: rgba(255,255,255,0.45);
+    text-decoration: none; transition: color 0.2s; letter-spacing: 0.06em;
+  }
+  .footer-nav a:hover { color: var(--gold-light); }
+  .footer-copy {
+    font-size: 11px; color: rgba(255,255,255,0.25);
+    text-align: center; line-height: 1.9; letter-spacing: 0.05em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    header { padding: 0 20px; }
+    nav { display: none; }
+    .page-hero { padding: 44px 20px 52px; }
+    .page-wrap { padding: 36px 20px 72px; }
+    .tab-btn { font-size: 12px; padding: 11px 12px; }
+    footer { padding: 40px 20px 24px; }
+    .footer-top { flex-direction: column; gap: 24px; }
+    .footer-nav { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="logo">
+      <span class="logo-main">🌿 お金のトリセツ</span>
+      <span class="logo-sub">OKANE NO TORISETSU</span>
+    </a>
+        <nav>
+      <a href="/index.html">ホーム</a>
+      <a href="/#nisa">NISA</a>
+      <a href="/#ideco">iDeCo</a>
+      <a href="/#securities">証券口座</a>
+      <a href="/#usstocks">米国株</a>
+      <a href="/profile.html">プロフィール</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-en">Legal</div>
+    <h1 class="hero-title">プライバシーポリシー・免責事項</h1>
+    <p class="hero-desc">当サイトの個人情報の取り扱いおよび免責事項についてご説明します</p>
+    <span class="hero-updated">最終更新：2025年1月1日</span>
+  </div>
+</div>
+
+<!-- PAGE WRAP -->
+<div class="page-wrap">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="#">ホーム</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>プライバシーポリシー・免責事項</span>
+  </nav>
+
+  <!-- TAB -->
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('privacy', this)">🔒 プライバシーポリシー</button>
+    <button class="tab-btn" onclick="switchTab('disclaimer', this)">📋 免責事項</button>
+  </div>
+
+  <!-- ===== PRIVACY POLICY ===== -->
+  <section class="policy-section active" id="privacy">
+
+    <div class="sec-eyebrow">
+      <span class="sec-en">Privacy Policy</span>
+      <span class="sec-line"></span>
+    </div>
+    <h2 class="sec-title">プライバシーポリシー</h2>
+
+    <div class="intro-box">
+      「お金のトリセツ」（以下「当サイト」）は、訪問者の個人情報の保護を重要な責務と考えています。以下に、当サイトにおける個人情報の取り扱いについてご説明します。
+    </div>
+
+    <div class="policy-article">
+      <h2><span class="h2-num">01</span>個人情報の収集について</h2>
+      <p>当サイトでは、お問い合わせフォームをご利用の際に、お名前・メールアドレスなどの個人情報をご入力いただく場合があります。これらの情報は、お問い合わせへの返答のみに使用し、第三者への提供は行いません。</p>
+    </div>
+
+    <div class="policy-article">
+      <h2><span class="h2-num">02</span>アクセス解析ツールについて</h2>
+      <p>当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を使用しています。このGoogleアナリティクスはデータの収集のためにCookieを使用しています。</p>
+      <div class="info-box">
+        <div class="info-box-title">💡 Cookieについて</div>
+        このデータは匿名で収集されており、個人を特定するものではありません。Cookieの使用はブラウザの設定により拒否することが可能です。また、Googleアナリティクスのデータ収集を無効にしたい場合は、Googleアナリティクスオプトアウトアドオンをご利用ください。
+      </div>
+      <p>Googleのプライバシーポリシーについては、<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">こちら</a>をご確認ください。</p>
+    </div>
+
+    <div class="policy-article">
+      <h2><span class="h2-num">03</span>広告について（Google AdSense）</h2>
+      <p>当サイトでは、第三者配信の広告サービス「Google AdSense」を利用しています。広告配信のためにCookieを使用し、当サイトや他のサイトへのアクセス情報に基づいて広告を配信する場合があります。</p>
+      <ul>
+        <li>Cookieを無効にする設定は、お使いのブラウザの設定から行えます</li>
+        <li>Googleが広告Cookieを使用することにより、当サイトや他のサイトへのアクセス情報に基づいてユーザーに広告が配信されます</li>
+        <li>詳細は<a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Googleの広告に関するポリシー</a>をご覧ください</li>
+      </ul>
+    </div>
+
+    <div class="policy-article">
+      <h2><span class="h2-num">04</span>アフィリエイトについて</h2>
+      <p>当サイトは、Amazon.co.jp・A8.net・もしもアフィリエイトなどのアフィリエイトプログラムに参加しています。</p>
+      <div class="info-box">
+        <div class="info-box-title">📢 アフィリエイト広告の表示について</div>
+        当サイトの記事には、アフィリエイトリンクが含まれる場合があります。リンクを経由して商品・サービスをご購入いただいた場合、当サイトに紹介料が発生することがあります。なお、これによって読者の方にご負担が増えることはありません。
+      </div>
+    </div>
+
+    <div class="policy-article">
+      <h2><span class="h2-num">05</span>コメント・お問い合わせについて</h2>
+      <p>コメントやお問い合わせフォームから送信していただいた情報は、スパム対策・お問い合わせへの返答以外の目的には使用しません。また、第三者に提供することもありません。</p>
+    </div>
+
+    <div class="policy-article">
+      <h2><span class="h2-num">06</span>プライバシーポリシーの変更について</h2>
+      <p>当サイトは、必要に応じてプライバシーポリシーを変更することがあります。変更後のポリシーは、当ページに掲載した時点で効力が生じるものとします。</p>
+    </div>
+
+    <div class="contact-box">
+      <div class="contact-box-title">📮 個人情報に関するお問い合わせ</div>
+      <p>個人情報の取り扱いに関するお問い合わせは、<a href="#">お問い合わせフォーム</a>よりご連絡ください。</p>
+    </div>
+
+  </section>
+
+  <!-- ===== DISCLAIMER ===== -->
+  <section class="policy-section" id="disclaimer">
+
+    <div class="sec-eyebrow">
+      <span class="sec-en">Disclaimer</span>
+      <span class="sec-line"></span>
+    </div>
+    <h2 class="sec-title">免責事項</h2>
+
+    <div class="intro-box">
+      当サイトをご利用いただく前に、以下の免責事項をよくお読みください。当サイトをご利用いただいた場合、以下の内容に同意いただいたものとみなします。
+    </div>
+
+    <div class="policy-article">
+      <h2><span class="h2-num">01</span>投資情報に関する免責</h2>
+      <div class="warning-box">
+        <div class="info-box-title">⚠️ 重要なお知らせ</div>
+        当サイトに掲載している投資・資産運用に関する情報は、<strong>投資助言・投資勧誘を目的としたものではありません。</strong>投資はすべて自己責任でお願いします。
+      </div>
+      <p>当サイトの情報をもとに投資された結果、損失が生じた場合でも、当サイトは一切の責任を負いかねます。投資に関する最終的な判断は、ご自身の責任において行ってください。</p>
+      <ul>
+        <li>過去の運用実績は将来の利益を保証するものではありません</li>
+        <li>投資信託・株式等への投資は元本を割り込むリスクがあります</li>
+        <li>記載の数値・データは執筆時点のものであり、変更される場合があります</li>
+      </ul>
+    </div>
+
+    <div class="policy-article">
+      <h2><span class="h2-num">02</span>情報の正確性について</h2>
+      <p>当サイトでは、掲載情報の正確性・信頼性には十分注意を払っていますが、情報の完全性・正確性・有用性・安全性を保証するものではありません。</p>
+      <p>掲載情報は執筆時点のものです。法律・制度・サービス内容などは変更される場合があります。最新情報については、各公式サイトや金融機関へご確認ください。</p>
+    </div>
+
+    <div class="policy-article">
+      <h2><span class="h2-num">03</span>リンクについて</h2>
+      <p>当サイトから外部サイトへのリンクを含む場合がありますが、リンク先の内容・運営等について当サイトは責任を負いません。リンク先のご利用は自己責任でお願いします。</p>
+      <div class="info-box">
+        <div class="info-box-title">🔗 アフィリエイトリンクについて</div>
+        当サイトにはアフィリエイトリンクが含まれています。リンク先でのご購入・お申し込みにより、当サイトに紹介料が発生する場合がありますが、これによってご利用者様にご負担が発生することはありません。
+      </div>
+    </div>
+
+    <div class="policy-article">
+      <h2><span class="h2-num">04</span>著作権について</h2>
+      <p>当サイトに掲載されているコンテンツ（文章・画像・デザイン等）の著作権は、当サイト管理人または各権利者に帰属します。</p>
+      <ul>
+        <li>無断での転載・複製・改変・再配布は禁止します</li>
+        <li>引用の場合は、出典元として当サイト名とURLを明記してください</li>
+        <li>ご不明な点はお問い合わせフォームよりご連絡ください</li>
+      </ul>
+    </div>
+
+    <div class="policy-article">
+      <h2><span class="h2-num">05</span>免責事項の変更について</h2>
+      <p>当サイトは、必要に応じて免責事項を変更することがあります。変更後の内容は当ページに掲載した時点で効力が生じるものとします。</p>
+    </div>
+
+    <div class="policy-divider"></div>
+
+    <div class="contact-box">
+      <div class="contact-box-title">📮 お問い合わせ</div>
+      <p>当サイトの内容に関するご質問・ご意見は、<a href="#">お問い合わせフォーム</a>よりお気軽にご連絡ください。</p>
+    </div>
+
+  </section>
+
+</div><!-- /page-wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">🌿 お金のトリセツ</div>
+        <div class="footer-tagline">
+          投資初心者のためのやさしいお金の教科書<br>
+          A gentle guide to growing your money
+        </div>
+      </div>
+            <nav class="footer-nav">
+        <a href="/profile.html">プロフィール</a>
+        <a href="/policy.html">プライバシーポリシー</a>
+        <a href="/policy.html#disclaimer">免責事項</a>
+        <a href="/contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="footer-copy">
+      ※投資は自己責任でお願いします。当サイトの情報は投資助言を目的としたものではありません。<br>
+      © 2025 お金のトリセツ All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.policy-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

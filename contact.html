@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ｜お金のトリセツ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --olive:        #6B7C4E;
+    --olive-dark:   #4E5C38;
+    --olive-light:  #8FA06A;
+    --olive-pale:   #C8D4B0;
+    --olive-mist:   #EDF0E6;
+    --cream:        #F7F2E8;
+    --cream-deep:   #EDE5D4;
+    --terra:        #C17F5A;
+    --terra-light:  #D9A07C;
+    --terra-pale:   #F2DDD0;
+    --gold:         #C9A96E;
+    --gold-light:   #E2C99A;
+    --brown:        #3D2E1E;
+    --brown-mid:    #6B5444;
+    --brown-light:  #9C8070;
+    --white:        #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--cream);
+    color: var(--brown);
+    line-height: 1.85;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%236B7C4E' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: rgba(247,242,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--cream-deep);
+    position: sticky; top: 0; z-index: 200; padding: 0 48px;
+  }
+  .header-inner {
+    max-width: 1080px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; height: 72px;
+  }
+  .logo { text-decoration: none; display: flex; flex-direction: column; gap: 1px; }
+  .logo-main { font-family: 'Noto Serif JP', serif; font-size: 18px; font-weight: 700; color: var(--olive-dark); letter-spacing: 0.08em; }
+  .logo-sub { font-size: 9px; color: var(--brown-light); letter-spacing: 0.12em; font-weight: 500; }
+  nav { display: flex; align-items: center; gap: 32px; }
+  nav a {
+    text-decoration: none; font-size: 12px; font-weight: 500;
+    color: var(--brown-mid); letter-spacing: 0.1em; transition: color 0.2s; position: relative;
+  }
+  nav a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1px; background: var(--terra); transition: width 0.3s ease;
+  }
+  nav a:hover { color: var(--olive-dark); }
+  nav a:hover::after { width: 100%; }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    background: var(--olive-dark);
+    padding: 56px 48px 64px;
+    position: relative; overflow: hidden; z-index: 1;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; top: -80px; right: -60px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(200,212,176,0.1), transparent 70%);
+    border-radius: 50%;
+  }
+  .page-hero::after {
+    content: '';
+    position: absolute; bottom: -60px; left: 8%;
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, rgba(193,127,90,0.08), transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; letter-spacing: 0.25em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-en::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(24px, 3vw, 34px); font-weight: 700;
+    color: var(--white); letter-spacing: 0.04em; margin-bottom: 14px;
+  }
+  .hero-desc { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.9; max-width: 520px; }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    max-width: 720px; margin: 0 auto;
+    padding: 56px 48px 96px; position: relative; z-index: 1;
+  }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; color: var(--brown-light);
+    margin-bottom: 48px; letter-spacing: 0.05em;
+  }
+  .breadcrumb a { color: var(--brown-light); text-decoration: none; transition: color 0.2s; }
+  .breadcrumb a:hover { color: var(--terra); }
+  .breadcrumb-sep { color: var(--olive-pale); }
+
+  /* ── NOTICE BOXES ── */
+  .notice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .notice-card {
+    background: var(--white);
+    border: 1.5px solid var(--cream-deep);
+    border-radius: 18px;
+    padding: 20px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .notice-icon {
+    font-size: 22px;
+    width: 44px; height: 44px;
+    background: var(--olive-mist);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .notice-title {
+    font-size: 13px; font-weight: 700;
+    color: var(--olive-dark); margin-bottom: 5px; letter-spacing: 0.04em;
+  }
+  .notice-body { font-size: 12px; color: var(--brown-light); line-height: 1.7; }
+
+  /* ── FORM CARD ── */
+  .form-card {
+    background: var(--white);
+    border: 1.5px solid var(--cream-deep);
+    border-radius: 28px;
+    padding: 44px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .form-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--olive-dark), var(--olive-light), var(--terra));
+    border-radius: 28px 28px 0 0;
+  }
+  .form-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--brown); margin-bottom: 6px; letter-spacing: 0.04em;
+  }
+  .form-subtitle {
+    font-size: 13px; color: var(--brown-light);
+    margin-bottom: 36px; letter-spacing: 0.04em;
+  }
+
+  /* ── FORM FIELDS ── */
+  .field-group { margin-bottom: 28px; }
+  .field-label {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 700;
+    color: var(--brown-mid); margin-bottom: 10px; letter-spacing: 0.05em;
+  }
+  .field-required {
+    background: var(--terra);
+    color: var(--white);
+    font-size: 9px; font-weight: 700;
+    padding: 2px 8px; border-radius: 50px;
+    letter-spacing: 0.08em;
+  }
+  .field-optional {
+    background: var(--olive-mist);
+    color: var(--olive-dark);
+    font-size: 9px; font-weight: 700;
+    padding: 2px 8px; border-radius: 50px;
+    letter-spacing: 0.08em;
+    border: 1px solid var(--olive-pale);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 100%;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    color: var(--brown);
+    background: var(--cream);
+    border: 1.5px solid var(--cream-deep);
+    border-radius: 14px;
+    padding: 14px 18px;
+    outline: none;
+    transition: all 0.25s;
+    appearance: none;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  select:focus,
+  textarea:focus {
+    border-color: var(--olive);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(107,124,78,0.08);
+  }
+  input::placeholder, textarea::placeholder {
+    color: var(--brown-light);
+    font-size: 13px;
+  }
+  textarea { resize: vertical; min-height: 160px; line-height: 1.8; }
+
+  /* Select arrow */
+  .select-wrap { position: relative; }
+  .select-wrap::after {
+    content: '›';
+    position: absolute; right: 18px; top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    color: var(--brown-light); font-size: 16px;
+    pointer-events: none;
+  }
+
+  /* ── CHARACTER COUNT ── */
+  .field-footer {
+    display: flex; justify-content: flex-end;
+    margin-top: 6px;
+  }
+  .char-count { font-size: 11px; color: var(--brown-light); letter-spacing: 0.05em; }
+
+  /* ── PRIVACY CHECK ── */
+  .privacy-check {
+    background: var(--olive-mist);
+    border: 1.5px solid var(--olive-pale);
+    border-radius: 16px;
+    padding: 18px 22px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .privacy-check input[type="checkbox"] {
+    width: 20px; height: 20px;
+    border-radius: 6px;
+    border: 2px solid var(--olive-pale);
+    background: var(--white);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 1px;
+    accent-color: var(--olive-dark);
+  }
+  .privacy-check label {
+    font-size: 13px; color: var(--brown-mid); line-height: 1.7; cursor: pointer;
+  }
+  .privacy-check label a {
+    color: var(--olive); text-decoration: underline;
+    text-underline-offset: 3px; transition: color 0.2s;
+  }
+  .privacy-check label a:hover { color: var(--terra); }
+
+  /* ── SUBMIT BUTTON ── */
+  .submit-btn {
+    width: 100%;
+    background: var(--olive-dark);
+    color: var(--white);
+    border: none;
+    padding: 17px 32px;
+    border-radius: 50px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px; font-weight: 700;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: 0 6px 24px rgba(78,92,56,0.25);
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .submit-btn:hover {
+    background: var(--olive);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(78,92,56,0.32);
+  }
+  .submit-btn:active { transform: translateY(0); }
+
+  /* ── FORM NOTE ── */
+  .form-note {
+    text-align: center;
+    font-size: 11px; color: var(--brown-light);
+    margin-top: 16px; line-height: 1.8; letter-spacing: 0.04em;
+  }
+
+  /* ── SUCCESS MESSAGE (hidden by default) ── */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 48px 24px;
+  }
+  .success-icon {
+    font-size: 56px; margin-bottom: 20px; display: block;
+  }
+  .success-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--olive-dark); margin-bottom: 12px; letter-spacing: 0.04em;
+  }
+  .success-body {
+    font-size: 14px; color: var(--brown-mid); line-height: 1.9;
+  }
+
+  /* ── CF7 COMPATIBILITY NOTE ── */
+  .cf7-note {
+    background: var(--terra-pale);
+    border: 1.5px solid rgba(193,127,90,0.2);
+    border-radius: 16px;
+    padding: 18px 22px;
+    margin-top: 32px;
+    font-size: 13px; color: var(--brown-mid); line-height: 1.85;
+  }
+  .cf7-note-title {
+    font-size: 12px; font-weight: 700; color: var(--terra);
+    letter-spacing: 0.08em; margin-bottom: 6px;
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--brown);
+    padding: 48px 48px 28px;
+    position: relative; z-index: 1;
+  }
+  .footer-inner { max-width: 1080px; margin: 0 auto; }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 24px;
+  }
+  .footer-logo { font-family: 'Noto Serif JP', serif; font-size: 18px; color: var(--cream); font-weight: 700; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .footer-tagline { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; line-height: 1.7; }
+  .footer-nav { display: flex; flex-direction: column; gap: 10px; text-align: right; }
+  .footer-nav a { font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; letter-spacing: 0.06em; }
+  .footer-nav a:hover { color: var(--gold-light); }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); text-align: center; line-height: 1.9; letter-spacing: 0.05em; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .form-card { animation: fadeUp 0.6s 0.1s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    header { padding: 0 20px; }
+    nav { display: none; }
+    .page-hero { padding: 44px 20px 52px; }
+    .page-wrap { padding: 36px 20px 72px; }
+    .notice-grid { grid-template-columns: 1fr; }
+    .form-card { padding: 32px 24px; }
+    footer { padding: 40px 20px 24px; }
+    .footer-top { flex-direction: column; gap: 24px; }
+    .footer-nav { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="/index.html" class="logo">
+      <span class="logo-main">🌿 お金のトリセツ</span>
+      <span class="logo-sub">OKANE NO TORISETSU</span>
+    </a>
+        <nav>
+      <a href="/index.html">ホーム</a>
+      <a href="/#nisa">NISA</a>
+      <a href="/#ideco">iDeCo</a>
+      <a href="/#securities">証券口座</a>
+      <a href="/#usstocks">米国株</a>
+      <a href="/profile.html">プロフィール</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="hero-en">Contact</div>
+    <h1 class="hero-title">お問い合わせ</h1>
+    <p class="hero-desc">
+      記事に関するご質問・ご感想・ご意見などお気軽にどうぞ。<br>
+      通常2〜5営業日以内にご返信いたします。
+    </p>
+  </div>
+</div>
+
+<!-- PAGE WRAP -->
+<div class="page-wrap">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="#">ホーム</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>お問い合わせ</span>
+  </nav>
+
+  <!-- NOTICE CARDS -->
+  <div class="notice-grid">
+    <div class="notice-card">
+      <div class="notice-icon">💬</div>
+      <div>
+        <div class="notice-title">こんなお問い合わせOK</div>
+        <div class="notice-body">記事の内容・投資の疑問・ブログ運営に関するご質問など</div>
+      </div>
+    </div>
+    <div class="notice-card">
+      <div class="notice-icon">⏱️</div>
+      <div>
+        <div class="notice-title">返信目安</div>
+        <div class="notice-body">通常2〜5営業日以内。内容によりお時間をいただく場合があります</div>
+      </div>
+    </div>
+    <div class="notice-card">
+      <div class="notice-icon">🔒</div>
+      <div>
+        <div class="notice-title">個人情報の取り扱い</div>
+        <div class="notice-body">いただいた情報はお問い合わせへの返答のみに使用します</div>
+      </div>
+    </div>
+    <div class="notice-card">
+      <div class="notice-icon">🚫</div>
+      <div>
+        <div class="notice-title">ご遠慮ください</div>
+        <div class="notice-body">投資助言・勧誘・営業・スパム目的のお問い合わせ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM CARD -->
+  <div class="form-card">
+    <div class="form-title">お問い合わせフォーム</div>
+    <div class="form-subtitle">以下のフォームにご入力のうえ、送信してください</div>
+
+    <!-- DEMO FORM (実装時はContact Form 7に差し替え) -->
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+
+      <!-- お名前 -->
+      <div class="field-group">
+        <div class="field-label">
+          お名前
+          <span class="field-required">必須</span>
+        </div>
+        <input type="text" name="name" placeholder="例：山田 花子" required>
+      </div>
+
+      <!-- メールアドレス -->
+      <div class="field-group">
+        <div class="field-label">
+          メールアドレス
+          <span class="field-required">必須</span>
+        </div>
+        <input type="email" name="email" placeholder="例：hanako@example.com" required>
+      </div>
+
+      <!-- お問い合わせ種別 -->
+      <div class="field-group">
+        <div class="field-label">
+          お問い合わせの種別
+          <span class="field-required">必須</span>
+        </div>
+        <div class="select-wrap">
+          <select name="category" required>
+            <option value="" disabled selected>選択してください</option>
+            <option value="article">記事の内容について</option>
+            <option value="investment">投資・資産運用について</option>
+            <option value="affiliate">アフィリエイト・広告について</option>
+            <option value="collaboration">コラボ・取材のご依頼</option>
+            <option value="other">その他</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 件名 -->
+      <div class="field-group">
+        <div class="field-label">
+          件名
+          <span class="field-optional">任意</span>
+        </div>
+        <input type="text" name="subject" placeholder="例：NISAの記事について質問があります">
+      </div>
+
+      <!-- メッセージ -->
+      <div class="field-group">
+        <div class="field-label">
+          お問い合わせ内容
+          <span class="field-required">必須</span>
+        </div>
+        <textarea
+          name="message"
+          placeholder="お問い合わせ内容をできるだけ詳しくご記入ください。"
+          required
+          id="messageText"
+          oninput="updateCount()"
+        ></textarea>
+        <div class="field-footer">
+          <span class="char-count" id="charCount">0 / 1000文字</span>
+        </div>
+      </div>
+
+      <!-- Privacy checkbox -->
+      <div class="privacy-check">
+        <input type="checkbox" id="privacyCheck" required>
+        <label for="privacyCheck">
+          <a href="#" target="_blank">プライバシーポリシー</a>および<a href="#" target="_blank">免責事項</a>を読み、内容に同意してお問い合わせします。
+        </label>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="submit-btn">
+        <span>✉️</span>
+        <span>送信する</span>
+      </button>
+
+      <p class="form-note">
+        ※送信後、確認メールが届かない場合は迷惑メールフォルダをご確認ください。<br>
+        ※返信までに数日かかる場合があります。あらかじめご了承ください。
+      </p>
+
+    </form>
+
+    <!-- Success Message -->
+    <div class="success-msg" id="successMsg">
+      <span class="success-icon">🌿</span>
+      <div class="success-title">送信が完了しました</div>
+      <p class="success-body">
+        お問い合わせありがとうございます。<br>
+        通常2〜5営業日以内にご返信いたします。<br>
+        しばらくお待ちください。
+      </p>
+    </div>
+
+    <!-- CF7 Note -->
+    <div class="cf7-note">
+      <div class="cf7-note-title">🔧 WordPress実装について</div>
+      このフォームはデザイン確認用のサンプルです。WordPressに組み込む際は、<strong>Contact Form 7</strong>プラグインのショートコード（<code>[contact-form-7 id="xxx"]</code>）に差し替えてください。上記のデザインはContact Form 7のCSSカスタマイズで再現できます。
+    </div>
+
+  </div>
+
+</div><!-- /page-wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">🌿 お金のトリセツ</div>
+        <div class="footer-tagline">
+          投資初心者のためのやさしいお金の教科書<br>
+          A gentle guide to growing your money
+        </div>
+      </div>
+            <nav class="footer-nav">
+        <a href="/profile.html">プロフィール</a>
+        <a href="/policy.html">プライバシーポリシー</a>
+        <a href="/policy.html#disclaimer">免責事項</a>
+        <a href="/contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="footer-copy">
+      ※投資は自己責任でお願いします。当サイトの情報は投資助言を目的としたものではありません。<br>
+      © 2025 お金のトリセツ All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  function updateCount() {
+    const msg = document.getElementById('messageText');
+    const count = document.getElementById('charCount');
+    const len = msg.value.length;
+    count.textContent = len + ' / 1000文字';
+    count.style.color = len > 900 ? '#C17F5A' : '#9C8070';
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('successMsg');
+    form.style.opacity = '0';
+    form.style.transition = 'opacity 0.4s';
+    setTimeout(() => {
+      form.style.display = 'none';
+      success.style.display = 'block';
+      success.style.animation = 'fadeUp 0.6s ease both';
+    }, 400);
+  }
+</script>
+
+</body>
+</html>
